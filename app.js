@@ -15,6 +15,7 @@ const util = require('util');
 const logger = require('./lib/logger.js');
 //security middleware
 const helmet = require('helmet');
+const cors = require('cors');
 
 // routes
 const index = require('./lib/routes/index');
@@ -33,6 +34,8 @@ mongoose
     .catch((err) => console.error(err));
 
 const app = express();
+app.use(cors());
+
 app.set('trust proxy', true);
 app.use(helmet());
 //use sessions for tracking logins
